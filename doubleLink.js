@@ -16,6 +16,8 @@ print() {
     }
 }
 
+
+
 pushBack(data) {
 
     const newNode = new Node(data);
@@ -47,6 +49,23 @@ pushFront(data) {
     newNode.next = this.first;
     this.first = newNode;
 }
+
+
+
+findNode(data) {
+
+    let curr = this.first;
+    while (curr) {
+
+        if (curr.data == data) {
+            return curr;
+        }
+        curr = curr.next;
+
+    }
+    return null;
+}
+
 }
 
 
@@ -66,6 +85,8 @@ list.pushBack(1);
 list.pushBack(4);
 list.pushBack(2);
 list.pushBack(3); 
-list.pushFront(9);
+
+const find = list.findNode(2);
+console.log(find);
 
 list.print();
