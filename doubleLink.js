@@ -73,9 +73,31 @@ insertAfter(node, data){
     newNode.next = node.next;
     node.next = newNode;
     newNode.prev = node;
-    
 }
 
+
+
+insertBefore(node, data) {
+
+    const newNode = new Node(data);
+
+    if (this.first == this.last) {
+            
+        this.first = newNode;
+        newNode.next = this.last;
+        return;
+    }
+
+    if (this.first == node) {
+        this.first.prev = newNode;
+        newNode.next = this.first;
+        this.first = newNode;
+    }
+
+    newNode.prev = node.prev;
+    node.prev.next = newNode;
+    newNode.next = node;
+}
 }
 
 
@@ -95,9 +117,8 @@ list.pushBack(1);
 list.pushBack(4);
 list.pushBack(2);
 list.pushBack(3); 
-list.pushFront(9);
 
-const insert = list.insertAfter(list.findNode(1), 5);
+const insert = list.insertBefore(list.findNode(1), 5);
 list.print();
 
 
